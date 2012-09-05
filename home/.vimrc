@@ -18,6 +18,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'spolu/dwm.vim'
 
 syntax on
 filetype plugin indent on
