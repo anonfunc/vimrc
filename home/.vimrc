@@ -5,9 +5,11 @@
 " http://nvie.com/posts/how-i-boosted-my-vim/
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 
+" {{{ Basics
 set nocompatible               " be iMproved
 filetype off                   " required!
-
+" }}}
+" {{{ Vundles
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -19,16 +21,18 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
-
+" }}}
+" {{{ Turn syntax back on
 syntax on
 filetype plugin indent on
-
-" Appearance
+" }}}
+" {{{ Appearance
 " set background=dark
 " set background=light
 " let g:solarized_termcolors=256
 colorscheme solarized
-
+" }}}
+" {{{ Basic Vim settings
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set nowrap
@@ -68,8 +72,8 @@ endif
 
 set nobackup
 set noswapfile
-
-
+" }}}
+" {{{ Custom bindings
 " JK in insert is <esc>
 inoremap jk <ESC>
 
@@ -95,21 +99,34 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " trick from
 " http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks 
 cmap w!! %!sudo tee > /dev/null %
-
-" Fugitive
+" }}}
+" {{{ Other configuation
+" {{{ Fugitive
 set statusline+=%{fugitive#statusline()}
-
-" From http://vim.wikia.com/wiki/Remove_unwanted_spaces
-autocmd BufWritePre *.{properties,xml,java} :%s/\s\+$//e
-
-
-autocmd BufRead *.{xml,java} set makeprg=ant\ -emacs
-" autocmd BufRead *.{xml,java} set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
-
-" Better expansion
+" }}}
+" {{{ CtrlP tweaks
 set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.swp,*.bak,*.pyc,*.class,build,.git,.svn,*.swc,ui
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
+" Multiple VCS's:
+let g:ctrlp_user_command = {
+    \ 'types': {
+        \ 1: ['.git', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'],
+        \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+    \ 'fallback': 'find %s -type f',
+    \ 'ignore': 1
+    \ }
+" }}}
+
+" From http://vim.wikia.com/wiki/Remove_unwanted_spaces
+autocmd BufWritePre *.{properties,xml,java} :%s/\s\+$//e
+autocmd BufRead *.{xml,java} set makeprg=ant\ -emacs
+" autocmd BufRead *.{xml,java} set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
+
 
 " Use ack
 set grepprg=ack
@@ -117,4 +134,5 @@ set grepprg=ack
 " NerdTree tweaks
 " open a NERDTree automatically when vim starts up if no files were specified
 autocmd vimenter * if !argc() | NERDTree | endif
-
+" }}}
+" vim: fdm=marker:
