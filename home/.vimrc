@@ -21,6 +21,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neocomplcache-snippets-complete'
 " }}}
 " {{{ Turn syntax back on
 syntax on
@@ -134,5 +136,9 @@ set grepprg=ack
 " NerdTree tweaks
 " open a NERDTree automatically when vim starts up if no files were specified
 autocmd vimenter * if !argc() | NERDTree | endif
+
+" NeoComplCache
+let g:neocomplcache_enable_at_startup = 1
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
 " }}}
 " vim: fdm=marker:
