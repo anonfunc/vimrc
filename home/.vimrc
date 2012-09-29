@@ -20,13 +20,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-repeat'
 Bundle 'kien/ctrlp.vim'
-Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
 Bundle 'derekwyatt/vim-scala'
 if version >= 703
     " Behave badly under 7.0.0
+    Bundle 'scrooloose/nerdtree'
     Bundle 'Shougo/neocomplcache'
     Bundle 'Shougo/neocomplcache-snippets-complete'
 endif
