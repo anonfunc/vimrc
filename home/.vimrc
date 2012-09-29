@@ -25,8 +25,12 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neocomplcache-snippets-complete'
+if version >= 703
+    " Behave badly under 7.0.0
+    Bundle 'Shougo/neocomplcache'
+    Bundle 'Shougo/neocomplcache-snippets-complete'
+endif
+
 " }}}
 " {{{ Turn syntax back on
 syntax on
