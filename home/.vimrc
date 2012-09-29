@@ -37,7 +37,7 @@ syntax on
 filetype plugin indent on
 " }}}
 " {{{ Appearance
-" set background=dark
+set background=dark
 " set background=light
 " let g:solarized_termcolors=256
 colorscheme solarized
