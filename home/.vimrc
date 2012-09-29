@@ -93,7 +93,9 @@ inoremap jk <ESC>
 
 " Custom commands
 nnoremap <silent> <leader>\ :nohlsearch<cr>
-nnoremap <silent> <leader>n :NERDTreeFind<cr>
+if version >= 703
+    nnoremap <silent> <leader>n :NERDTreeFind<cr>
+endif
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
 
@@ -143,7 +145,9 @@ set grepprg=ack
 
 " NerdTree tweaks
 " open a NERDTree automatically when vim starts up if no files were specified
-autocmd vimenter * if !argc() | NERDTree | endif
+if version >= 703
+    autocmd vimenter * if !argc() | NERDTree | endif
+endif
 
 " NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
