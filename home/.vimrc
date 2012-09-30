@@ -24,6 +24,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'Lokaltog/vim-easymotion'
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
@@ -41,6 +42,7 @@ set background=dark
 " set background=light
 " let g:solarized_termcolors=256
 colorscheme solarized
+hi EasyMotionShade ctermfg=black 
 " }}}
 " {{{ Basic Vim settings
 " The following are commented out as they cause vim to behave a lot
