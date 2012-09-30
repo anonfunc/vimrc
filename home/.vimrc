@@ -25,11 +25,13 @@ Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'Lokaltog/vim-powerline'
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
     Bundle 'Shougo/neocomplcache'
     Bundle 'Shougo/neocomplcache-snippets-complete'
+    Bundle 'majutsushi/tagbar'
 endif
 
 " }}}
@@ -43,6 +45,8 @@ set background=dark
 " let g:solarized_termcolors=256
 colorscheme solarized
 hi EasyMotionShade ctermfg=black 
+let g:Powerline_symbols = 'fancy'
+set laststatus=2
 " }}}
 " {{{ Basic Vim settings
 " The following are commented out as they cause vim to behave a lot
@@ -97,6 +101,7 @@ inoremap jk <ESC>
 nnoremap <silent> <leader>\ :nohlsearch<cr>
 if version >= 703
     nnoremap <silent> <leader>n :NERDTreeFind<cr>
+    nnoremap <silent> <leader>t :TagbarToggle<cr>
 endif
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
