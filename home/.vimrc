@@ -106,6 +106,7 @@ if version >= 703
 endif
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader>r :redraw!<cr>
 
 nnoremap <SPACE> :
 nnoremap <SPACE><SPACE> :!
