@@ -27,6 +27,7 @@ Bundle 'spolu/dwm.vim'
 Bundle 'derekwyatt/vim-scala'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'mileszs/ack.vim'
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
@@ -117,6 +118,8 @@ nnoremap ZX :q!<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+nnoremap <leader>a :Ack<space>
+
 " trick from
 " http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks 
 cmap w!! %!sudo tee > /dev/null %
@@ -149,8 +152,9 @@ autocmd BufRead *.{xml,java} set makeprg=ant\ -emacs
 " autocmd BufRead *.{xml,java} set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
 
-" Use ack
-set grepprg=ack
+" Use silver searcher
+set grepprg=ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " NerdTree tweaks
 " open a NERDTree automatically when vim starts up if no files were specified
