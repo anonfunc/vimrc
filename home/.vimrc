@@ -151,6 +151,9 @@ autocmd BufWritePre *.{properties,xml,java} :%s/\s\+$//e
 autocmd BufRead *.{xml,java} set makeprg=ant\ -emacs
 " autocmd BufRead *.{xml,java} set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
+" From
+" http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+au FocusLost * :wa
 
 " Use silver searcher
 set grepprg=ag
