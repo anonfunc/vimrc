@@ -162,7 +162,7 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 " NerdTree tweaks
 " open a NERDTree automatically when vim starts up if no files were specified
 if version >= 703
-    autocmd vimenter * if !argc() | NERDTree | endif
+    autocmd vimenter * if !argc() | NERDTree | only | endif
 endif
 
 " NeoComplCache
