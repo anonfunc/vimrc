@@ -147,6 +147,9 @@ let g:ctrlp_user_command = {
     \ }
 " }}}
 
+" Mute ultisnips complaints about python
+let g:UltiSnipsNoPythonWarning = 1
+
 " From http://vim.wikia.com/wiki/Remove_unwanted_spaces
 autocmd BufWritePre *.{properties,xml,java} :%s/\s\+$//e
 autocmd BufRead *.{xml,java} set makeprg=ant\ -emacs
