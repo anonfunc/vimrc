@@ -43,7 +43,12 @@ syntax on
 filetype plugin indent on
 " }}}
 " {{{ Appearance
-set background=dark
+if $SCHEME == 'light'
+    set background=light
+else
+    set background=dark
+endif
+" set background=dark
 " set background=light
 " let g:solarized_termcolors=256
 let g:solarized_termtrans = 1
