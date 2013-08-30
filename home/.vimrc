@@ -24,12 +24,10 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
-Bundle 'derekwyatt/vim-scala'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
-Bundle 'juvenn/mustache.vim'
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
