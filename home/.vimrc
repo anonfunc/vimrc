@@ -198,6 +198,8 @@ autocmd BufWritePre *.{properties,xml,java} :%s/\s\+$//e
 autocmd BufRead *.{xml,java} set makeprg=ant\ -emacs
 " autocmd BufRead *.{xml,java} set efm=%A\ %#[javac]\ %f:%l:\ %m,%-Z\ %#[javac]\ %p^,%-C%.%#
 
+au BufNewFile,BufRead *.gradle setf groovy
+
 " From
 " http://stevelosh.com/blog/2010/09/coming-home-to-vim/
 au FocusLost * :wa
