@@ -214,6 +214,12 @@ if version >= 703
     autocmd vimenter * if !argc() | NERDTree | only | endif
 endif
 
+
+" Persistent undo
+if version >= 703
+    set undofile
+endif
+
 " NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
