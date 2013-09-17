@@ -21,6 +21,7 @@ Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'kien/ctrlp.vim'
+Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
@@ -154,6 +155,12 @@ let g:ctrlp_user_command = {
     \ 'fallback': 'find %s -type f',
     \ 'ignore': 1
     \ }
+
+let g:ctrlp_extensions = ['funky']
+
+nnoremap <Leader>f :CtrlPFunky<Cr>
+" narrow the list down with a word under cursor
+nnoremap <Leader>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 " }}}
 
 " Mute ultisnips complaints about python
