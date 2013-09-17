@@ -25,7 +25,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'spolu/dwm.vim'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
+Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
 if version >= 703
@@ -49,10 +50,14 @@ endif
 " set background=dark
 " set background=light
 " let g:solarized_termcolors=256
+" set t_Co=16
+set t_Co=256
 let g:solarized_termtrans = 1
 colorscheme solarized
-hi EasyMotionShade ctermfg=black 
-let g:Powerline_symbols = 'fancy'
+hi EasyMotionShade ctermfg=black
+
+" let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
 set laststatus=2
 " }}}
 " {{{ Basic Vim settings

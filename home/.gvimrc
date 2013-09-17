@@ -1,8 +1,8 @@
 if has('mac')
-    set gfn=Source\ Code\ Pro:h18
+    set gfn=Inconsolata-dz\ for\ Powerline:h14
 endif
 if has('gui_gtk')
-    set gfn=Source\ Code\ Pro\ 18
+    set gfn=Inconsolata-dz\ for\ Powerline\ 14
 endif
 set background=dark
 set guioptions-=m  "remove menu bar
