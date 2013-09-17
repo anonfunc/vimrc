@@ -33,8 +33,14 @@ Bundle 'SirVer/ultisnips'
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
-    Bundle 'Shougo/neocomplcache'
+    Bundle 'scrooloose/syntastic'
+    "Bundle 'Shougo/neocomplcache'
     Bundle 'majutsushi/tagbar'
+    "Bundle 'klen/python-mode'
+    Bundle 'davidhalter/jedi-vim'
+    Bundle 'hynek/vim-python-pep8-indent'
+    Bundle 'ervandew/supertab'
+    Bundle 'kshenoy/vim-signature'
 endif
 
 " }}}
@@ -69,10 +75,10 @@ set backspace=indent,eol,start
 set copyindent
 set autoindent
 set shiftround
-set shiftwidth=4
+set shiftwidth=2
 set smarttab
-set tabstop=4
-set softtabstop=4
+set tabstop=2
+set softtabstop=2
 set expandtab
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
@@ -132,12 +138,33 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>a :Ack<space>
 
 " trick from
-" http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks 
+" http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks
 cmap w!! %!sudo tee > /dev/null %
 " }}}
 " {{{ Other configuation
 " {{{ Fugitive
 set statusline+=%{fugitive#statusline()}
+" }}}
+" {{{ Python
+" Python - Syntastic
+" Prefer flake8 only
+
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_post_args='--ignore=E302,E111,E121'
+
+" Show trailing whitepace and spaces before a tab:
+:highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd Syntax * syn match ExtraWhitespace /\s\+\%#\@<!$/ containedin=ALL
+
+augroup python
+  autocmd!
+
+  autocmd FileType python set cinwords=if,elif,else,for,while,try,except,finally,def,class
+  autocmd FileType python set tabstop=8 shiftwidth=2 smarttab expandtab softtabstop=2 autoindent nosmartindent
+
+  let python_space_errors = 1
+  setlocal nospell
+augroup END
 " }}}
 " {{{ CtrlP tweaks
 set wildmenu
