@@ -223,5 +223,16 @@ endif
 " NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
 imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Auto chmod scripts
+" From http://vim.wikia.com/wiki/Simple_creation_of_scripts
+function! MySetExecutableIfScript(line1, current_file)
+  if a:line1 =~ '^#!\(/usr\)*/bin/'
+    let chmod_command = "silent !chmod ugo+x " . a:current_file
+    execute chmod_command
+  endif
+endfunction
+autocmd BufWritePost * call MySetExecutableIfScript(getline(1), expand("%:p"))
+
 " }}}
 " vim: fdm=marker:
