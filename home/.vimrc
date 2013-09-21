@@ -30,6 +30,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
+Bundle 'mitsuhiko/vim-jinja'
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
