@@ -185,19 +185,22 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*.swp,*.bak,*.pyc,*.class,build,.git,.svn,*.swc,ui
 
+let g:ctrlp_extensions = ['funky', 'mixed']
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_regexp = 1
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_default_input = 1
 
 " Multiple VCS's:
 let g:ctrlp_user_command = {
     \ 'types': {
-        \ 1: ['.git', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'],
+        \ 1: ['.git', 'cd %s && git ls-files -oc --exclude-standard'],
         \ 2: ['.hg', 'hg --cwd %s locate -I .'],
     \ },
     \ 'fallback': 'find %s -type f',
     \ 'ignore': 1
     \ }
 
-let g:ctrlp_extensions = ['funky']
 
 nnoremap <Leader>f :CtrlPFunky<Cr>
 nnoremap <Leader><space>f :CtrlPFunky<Cr>
