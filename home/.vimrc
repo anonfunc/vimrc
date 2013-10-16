@@ -99,6 +99,7 @@ set undolevels=1000
 set title
 set visualbell
 set noerrorbells
+set number
 
 if !&diff && version >= 703
     set relativenumber
