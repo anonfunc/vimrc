@@ -176,6 +176,8 @@ augroup python
 
   let python_space_errors = 1
   setlocal nospell
+  set foldmethod=indent
+  set foldlevel=99
 augroup END
 " }}}
 " {{{ CtrlP tweaks
