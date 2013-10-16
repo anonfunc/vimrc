@@ -16,6 +16,7 @@ call vundle#rc()
 " Bundle time!
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-speeddating'
 Bundle 'tpope/vim-repeat'
@@ -31,6 +32,7 @@ Bundle 'bling/vim-airline'
 Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'mitsuhiko/vim-jinja'
+Bundle 'michaeljsmith/vim-indent-object'
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
@@ -67,6 +69,8 @@ hi EasyMotionShade ctermfg=black
 " let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 set laststatus=2
+
+highlight clear SignColumn
 " }}}
 " {{{ Basic Vim settings
 " The following are commented out as they cause vim to behave a lot
