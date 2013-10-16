@@ -126,11 +126,16 @@ inoremap jk <ESC>
 nnoremap <silent> <leader>\ :nohlsearch<cr>
 if version >= 703
     nnoremap <silent> <leader>n :NERDTreeFind<cr>
+    nnoremap <silent> <leader><SPACE>n :NERDTreeFind<cr>
+    nnoremap <silent> <leader><SPACE>t :TagbarToggle<cr>
     nnoremap <silent> <leader>t :TagbarToggle<cr>
 endif
 nnoremap <leader>gs :Gstatus<cr>
+nnoremap <leader><SPACE>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
+nnoremap <leader><SPACE>gb :Gblame<cr>
 nnoremap <leader>r :redraw!<cr>
+nnoremap <leader><SPACE>r :redraw!<cr>
 
 nnoremap <SPACE> :
 nnoremap <SPACE><SPACE> :!
@@ -142,6 +147,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 nnoremap <leader>a :Ack<space>
+nnoremap <leader><SPACE>a :Ack<space>
 
 " trick from
 " http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks
@@ -192,8 +198,10 @@ let g:ctrlp_user_command = {
 let g:ctrlp_extensions = ['funky']
 
 nnoremap <Leader>f :CtrlPFunky<Cr>
+nnoremap <Leader><space>f :CtrlPFunky<Cr>
 " narrow the list down with a word under cursor
 nnoremap <Leader>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+nnoremap <Leader><space>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 " }}}
 
 " Mute ultisnips complaints about python
