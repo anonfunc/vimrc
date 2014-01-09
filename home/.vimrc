@@ -33,6 +33,7 @@ Bundle 'mileszs/ack.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'mitsuhiko/vim-jinja'
 Bundle 'michaeljsmith/vim-indent-object'
+Bundle "mattn/emmet-vim"
 if version >= 703
     " Behave badly under 7.0.0
     Bundle 'scrooloose/nerdtree'
