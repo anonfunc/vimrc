@@ -7,51 +7,66 @@
 
 " {{{ Basics
 set nocompatible               " be iMproved
-filetype off                   " required!
+" filetype off                   " required!
 " }}}
-" {{{ Vundles
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" {{{ Bundles
+set rtp+=~/.vim/bundle/neobundle.vim
+call neobundle#rc(expand('~/.vim/bundle/'))
 
-" Bundle time!
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tacahiroy/ctrlp-funky'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'spolu/dwm.vim'
-Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'Lokaltog/vim-powerline'
-Bundle 'bling/vim-airline'
-Bundle 'mileszs/ack.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'mitsuhiko/vim-jinja'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle "mattn/emmet-vim"
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+"
+let g:make = 'gmake'
+if system('uname -o') =~ '^GNU/'
+        let g:make = 'make'
+endif
+NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': g:make}}
+
+" NeoBundle time!
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'spolu/dwm.vim'
+NeoBundle 'Lokaltog/vim-easymotion'
+"NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'mitsuhiko/vim-jinja'
+NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle "mattn/emmet-vim"
 if version >= 703
     " Behave badly under 7.0.0
-    Bundle 'scrooloose/nerdtree'
-    Bundle 'scrooloose/syntastic'
-    "Bundle 'Shougo/neocomplcache'
-    Bundle 'majutsushi/tagbar'
-    "Bundle 'klen/python-mode'
-    Bundle 'davidhalter/jedi-vim'
-    Bundle 'hynek/vim-python-pep8-indent'
-    Bundle 'ervandew/supertab'
-    Bundle 'kshenoy/vim-signature'
+    NeoBundle 'scrooloose/nerdtree'
+    NeoBundle 'scrooloose/syntastic'
+    "NeoBundle 'Shougo/neocomplcache'
+    NeoBundle 'majutsushi/tagbar'
+    "NeoBundle 'klen/python-mode'
+    NeoBundle 'davidhalter/jedi-vim'
+    NeoBundle 'hynek/vim-python-pep8-indent'
+    NeoBundle 'ervandew/supertab'
+    NeoBundle 'kshenoy/vim-signature'
 endif
-
 " }}}
 " {{{ Turn syntax back on
 syntax on
 filetype plugin indent on
 " }}}
+NeoBundleCheck
+" Installation check.
+if neobundle#exists_not_installed_bundles()
+  echomsg 'Not installed bundles : ' .
+        \ string(neobundle#get_not_installed_bundle_names())
+  NeoBundleInstall
+endif
+
 " {{{ Appearance
 if $SCHEME == 'light'
     set background=light
@@ -86,14 +101,14 @@ set smarttab
 set tabstop=2
 set softtabstop=2
 set expandtab
-set showcmd		" Show (partial) command in status line.
-set showmatch		" Show matching brackets.
-set ignorecase		" Do case insensitive matching
-set smartcase		" Do smart case matching
-set incsearch		" Incremental search
-set autowrite		" Automatically save before commands like :next and :make
+set showcmd             " Show (partial) command in status line.
+set showmatch           " Show matching brackets.
+set ignorecase          " Do case insensitive matching
+set smartcase           " Do smart case matching
+set incsearch           " Incremental search
+set autowrite           " Automatically save before commands like :next and :make
 set hidden             " Hide buffers when they are abandoned
-set mouse=a		" Enable mouse usage (all modes) in terminals
+set mouse=a             " Enable mouse usage (all modes) in terminals
 
 set history=1000
 set undolevels=1000

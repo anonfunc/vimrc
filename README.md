@@ -2,7 +2,6 @@ Install
 =======
     homesick clone anonfunc/vimrc
     homesick symlink anonfunc/vimrc
-    vim +BundleInstall +qall
 
 Uses
 ====
