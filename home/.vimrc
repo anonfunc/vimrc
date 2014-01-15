@@ -22,43 +22,39 @@ if system('uname -o') =~ '^GNU/'
 endif
 NeoBundle 'Shougo/vimproc.vim', {'build': {'unix': g:make}}
 
-" NeoBundle time!
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
+" {{{ Core Plugins
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'kshenoy/vim-signature'
+" }}}
+" {{{ Appearance Plugins
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'spolu/dwm.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
-"NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'bling/vim-airline'
+" }}}
+" {{{ New Actions
+NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'scrooloose/nerdtree'
+" }}}
+" {{{ File / Programming Lanuage Support
 NeoBundle 'mitsuhiko/vim-jinja'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle "mattn/emmet-vim"
-if version >= 703
-    " Behave badly under 7.0.0
-    NeoBundle 'scrooloose/nerdtree'
-    NeoBundle 'scrooloose/syntastic'
-    "NeoBundle 'Shougo/neocomplcache'
-    NeoBundle 'majutsushi/tagbar'
-    "NeoBundle 'klen/python-mode'
-    NeoBundle 'davidhalter/jedi-vim'
-    NeoBundle 'hynek/vim-python-pep8-indent'
-    NeoBundle 'ervandew/supertab'
-    NeoBundle 'kshenoy/vim-signature'
-endif
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'hynek/vim-python-pep8-indent'
+"NeoBundle 'klen/python-mode'
+" }}}
 " }}}
 " {{{ Turn syntax back on
 syntax on
 filetype plugin indent on
 " }}}
+" {{{ Finish Install
 NeoBundleCheck
 " Installation check.
 if neobundle#exists_not_installed_bundles()
@@ -66,7 +62,7 @@ if neobundle#exists_not_installed_bundles()
         \ string(neobundle#get_not_installed_bundle_names())
   NeoBundleInstall
 endif
-
+" }}}
 " {{{ Appearance
 if $SCHEME == 'light'
     set background=light
@@ -80,7 +76,6 @@ endif
 set t_Co=256
 let g:solarized_termtrans = 1
 colorscheme solarized
-hi EasyMotionShade ctermfg=black
 
 " let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
@@ -117,7 +112,7 @@ set visualbell
 set noerrorbells
 set number
 
-if !&diff && version >= 703
+if !&diff
     set relativenumber
     set gdefault
 endif
@@ -140,12 +135,10 @@ inoremap jk <ESC>
 
 " Custom commands
 nnoremap <silent> <leader>\ :nohlsearch<cr>
-if version >= 703
-    nnoremap <silent> <leader>n :NERDTreeFind<cr>
-    nnoremap <silent> <leader><SPACE>n :NERDTreeFind<cr>
-    nnoremap <silent> <leader><SPACE>t :TagbarToggle<cr>
-    nnoremap <silent> <leader>t :TagbarToggle<cr>
-endif
+nnoremap <silent> <leader>n :NERDTreeFind<cr>
+nnoremap <silent> <leader><SPACE>n :NERDTreeFind<cr>
+nnoremap <silent> <leader><SPACE>t :TagbarToggle<cr>
+nnoremap <silent> <leader>t :TagbarToggle<cr>
 nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader><SPACE>gs :Gstatus<cr>
 nnoremap <leader>gb :Gblame<cr>
@@ -196,34 +189,6 @@ augroup python
   set foldlevel=99
 augroup END
 " }}}
-" {{{ CtrlP tweaks
-set wildmenu
-set wildmode=longest:full,full
-set wildignore+=*.swp,*.bak,*.pyc,*.class,build,.git,.svn,*.swc,ui
-
-let g:ctrlp_extensions = ['funky', 'mixed']
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_regexp = 1
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_default_input = 1
-
-" Multiple VCS's:
-let g:ctrlp_user_command = {
-    \ 'types': {
-        \ 1: ['.git', 'cd %s && git ls-files -oc --exclude-standard'],
-        \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-    \ },
-    \ 'fallback': 'find %s -type f',
-    \ 'ignore': 1
-    \ }
-
-
-nnoremap <Leader>f :CtrlPFunky<Cr>
-nnoremap <Leader><space>f :CtrlPFunky<Cr>
-" narrow the list down with a word under cursor
-nnoremap <Leader>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-nnoremap <Leader><space>F :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-" }}}
 
 " Mute ultisnips complaints about python
 let g:UltiSnipsNoPythonWarning = 1
@@ -245,15 +210,11 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " NerdTree tweaks
 " open a NERDTree automatically when vim starts up if no files were specified
-if version >= 703
-    autocmd vimenter * if !argc() | NERDTree | only | endif
-endif
+autocmd vimenter * if !argc() | NERDTree | only | endif
 
 
 " Persistent undo
-if version >= 703
-    set undofile
-endif
+set undofile
 
 " NeoComplCache
 let g:neocomplcache_enable_at_startup = 1
@@ -270,4 +231,4 @@ endfunction
 autocmd BufWritePost * call MySetExecutableIfScript(getline(1), expand("%:p"))
 
 " }}}
-" vim: fdm=marker:
+" vim: fdm=marker foldlevel=0:
