@@ -36,6 +36,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 " }}}
 " {{{ New Actions
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'SirVer/ultisnips'
@@ -48,6 +49,11 @@ NeoBundle "mattn/emmet-vim"
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hynek/vim-python-pep8-indent'
 "NeoBundle 'klen/python-mode'
+NeoBundle 'https://github.com/Valloric/YouCompleteMe.git' , {
+      \ 'build' : {
+      \    'unix' : './install.sh'
+      \ },
+      \ }
 " }}}
 " }}}
 " {{{ Turn syntax back on
@@ -162,7 +168,31 @@ nnoremap <leader><SPACE>a :Ack<space>
 " http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks
 cmap w!! %!sudo tee > /dev/null %
 " }}}
-" {{{ Other configuation
+" {{{ Unite
+if executable('ag')
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
+  let g:unite_source_grep_recursive_opt=''
+elseif executable('ack')
+  let g:unite_source_grep_command='ack'
+  let g:unite_source_grep_default_opts='--no-heading --no-color -a'
+  let g:unite_source_grep_recursive_opt=''
+endif
+nnoremap <space>/ :Unite -no-split -start-insert grep:.<cr>
+
+nnoremap <C-p> :Unite -no-split -start-insert file_rec/async<cr>
+
+let g:unite_source_history_yank_enable = 1
+nnoremap <space>y :Unite -no-split history/yank<cr>
+
+nnoremap <space>s :Unite -quick-match buffer<cr>
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction
+" }}}
 " {{{ Fugitive
 set statusline+=%{fugitive#statusline()}
 " }}}
@@ -189,7 +219,7 @@ augroup python
   set foldlevel=99
 augroup END
 " }}}
-
+" {{{ Other configuation
 " Mute ultisnips complaints about python
 let g:UltiSnipsNoPythonWarning = 1
 
