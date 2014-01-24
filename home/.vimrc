@@ -193,6 +193,18 @@ function! s:unite_settings()
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
 " }}}
+" {{{ Unite Menus
+let g:unite_source_menu_menus = {}
+
+let g:unite_source_menu_menus.git = {
+    \ 'description' : 'Git',
+    \}
+let g:unite_source_menu_menus.git.command_candidates = [
+    \['git status', 'Gstatus'],
+    \['git blame', 'Gblame']
+    \]
+nnoremap <silent><leader><leader> :Unite -silent -start-insert menu<CR>
+" }}}
 " {{{ Fugitive
 set statusline+=%{fugitive#statusline()}
 " }}}
